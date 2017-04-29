@@ -5,7 +5,7 @@ import axios from 'axios'
 const SELECT_MOVIE = 'SELECT_MOVIE'
 
 // ----------- Action Creators
-export const setSelectedMovie = (selectedMovieId) => ({
+export const setSelectedMovieId = (selectedMovieId) => ({
   type: SELECT_MOVIE,
   selectedMovieId
 })
