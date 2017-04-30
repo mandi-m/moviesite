@@ -3,6 +3,8 @@ import axios from 'axios'
 
 // ----------- Actions
 const SELECT_MOVIE = 'SELECT_MOVIE'
+const START_DATE = 'START_DATE'
+const END_DATE = 'END_DATE'
 
 // ----------- Action Creators
 export const setSelectedMovieId = (selectedMovieId) => ({
@@ -10,10 +12,22 @@ export const setSelectedMovieId = (selectedMovieId) => ({
   selectedMovieId
 })
 
+export const setStartSearchDate = (startSearchDate) => ({
+  type: START_DATE,
+  startSearchDate
+})
+
+export const setEndSearchDate = (endSearchDate) => ({
+  type: END_DATE,
+  endSearchDate
+})
+
 
 // ----------- Reducer
 const initialState = {
-  selectedMovieId: 267935
+  selectedMovieId: 267935,
+  startSearchDate: '1950-01-01',
+  endSearchDate: '2010-12-31'
 }
 
 export default function moviesReducer(state = initialState, action) {
@@ -22,6 +36,14 @@ export default function moviesReducer(state = initialState, action) {
   switch (action.type) {
   case SELECT_MOVIE:
     nextState.selectedMovieId = action.selectedMovieId
+    break
+
+  case START_DATE:
+    nextState.startSearchDate = action.startSearchDate
+    break
+
+  case END_DATE:
+    nextState.endSearchDate = action.endSearchDate
     break
 
   default:

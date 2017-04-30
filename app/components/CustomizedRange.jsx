@@ -19,10 +19,10 @@ export default class CustomizedRange extends React.Component {
     };
   }
   onLowerBoundChange = (e) => {
-    this.setState({ lowerBound: +e.target.value });
+    this.setState({ lowerBound: +e.target.value })
   }
   onUpperBoundChange = (e) => {
-    this.setState({ upperBound: +e.target.value });
+    this.setState({ upperBound: +e.target.value })
   }
   onSliderChange = (value) => {
     log(value);
@@ -31,10 +31,11 @@ export default class CustomizedRange extends React.Component {
     });
   }
   handleApply = () => {
-    const { lowerBound, upperBound } = this.state;
-    this.setState({ value: [lowerBound, upperBound] });
+    const { lowerBound, upperBound } = this.state
+    this.setState({ value: [lowerBound, upperBound] })
   }
   render() {
+    console.log(this.state)
     return (
       <div>
         <label>LowerBound: </label>
