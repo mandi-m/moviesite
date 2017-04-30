@@ -19,11 +19,13 @@ class BasicSlider extends React.Component {
 
   render() {
     return (
+      <form className="form">
       <InputRange
         maxValue={2017}
         minValue={1888}
         value={this.state.value}
         onChange={value => this.handleChange({ value })} />
+        </form>
     )
   }
 }

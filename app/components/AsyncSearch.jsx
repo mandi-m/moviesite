@@ -14,28 +14,32 @@ const AsyncSearch = React.createClass({
   },
 
   render() {
-    const wrapperStyle = { width: 400, margin: 50 }
     const style = { width: 400, margin: 50 }
     return (
       <div>
-        {/*<pre>{JSON.stringify(this.state, null, 2)} </pre>*/}
-        <AsyncTypeahead
-          {...this.state}
-          labelKey="original_title"
-          onSearch={this.handleSearch}
-          placeholder="Search for a movie..."
-          onInputChange={this.onInputChange}
-          //renderMenuItemChildren={this._renderMenuItemChildren}
-        />
-        {/*{this._renderCheckboxes()}*/}
-        {/*<div style={wrapperStyle}>
-          <p>Range with custom handle</p>
-          <Range min={0} max={20} defaultValue={[3, 10]} tipFormatter={value => `${value}%`} />
-        </div>*/}
-    <div style={style}>
-      <BasicSlider />
-    </div>
-
+        <div className="container">
+          <div className="row">
+            <div className="col-md-4"></div>
+            <div className="col-md-4">
+              <div className="style"><BasicSlider /></div></div>
+            <div className="col-md-4"></div>
+          </div>
+          <div className="row"></div>
+          <div className="row">
+            <div className="col-md-4"></div>
+            <div className="col-md-4">
+              <div className="style">
+              <AsyncTypeahead
+                {...this.state}
+                labelKey="original_title"
+                onSearch={this.handleSearch}
+                placeholder="Search for a movie..."
+                onInputChange={this.onInputChange}
+              /></div>
+            </div>
+            <div className="col-md-4"></div>
+          </div>
+        </div>
       </div>
     )
   },
@@ -88,6 +92,7 @@ const AsyncSearch = React.createClass({
   onInputChange(nameMovie) {
     const movieId = this.findMovieByName(nameMovie)
     movieId && this.props.setMovieId(movieId)
+    movieId && this.props.fetchMovieData(movieId)
   },
 
   handleSearch(query) {
@@ -112,7 +117,7 @@ const AsyncSearch = React.createClass({
 // export default AsyncSearch
 
 //========container for AsyncSearch
-import { setSelectedMovieId } from '../reducers/movies'
+import { setSelectedMovieId, fetchMovieData } from '../reducers/movies'
 
 const mapStateToProps = (state, ownProps) => (
   {
@@ -125,6 +130,9 @@ const mapStateToProps = (state, ownProps) => (
 const mapDispatchToProps = (dispatch) => ({
   setMovieId: (movieId) => {
     dispatch(setSelectedMovieId(movieId))
+  },
+  fetchMovieData: (movieId) => {
+    dispatch(fetchMovieData(movieId))
   }
 })
 

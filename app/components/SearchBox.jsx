@@ -8,7 +8,7 @@ export default class SearchBox extends Component {
   }
   render() {
     return (
-      <div className="col-xs-12 search-container nopadding">
+      <div className="formgroup col-xs-12 search-container nopadding">
         <div className="row">
           <div className="col-xs-12 col-sm-6 col-lg-7">
             <form className="searchbox">

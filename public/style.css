@@ -1,20 +1,9 @@
-td {
-    width: 10px;
-    height: 10px;
-    border: solid 1pt black;
-}
-.alive {
-    background-color: green;
+body {
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
-.dead {
-    background-color: red;
-}
-
-h1 {
-    color: black;
-}
-
-h3 {
-    color: black;
+.form {
+  margin: 0 auto;
+  padding: 100px 30px 0;
 }

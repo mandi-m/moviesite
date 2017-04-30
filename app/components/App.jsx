@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import SearchBox from './SearchBox';
-import Card from './card';
-import Bloodhound from 'bloodhound-js'
-import typeahead from 'typeahead'
-import $ from 'jquery'
+import MovieCard from './MovieCard';
 import Footer from './Footer'
 import {Typeahead} from 'react-bootstrap-typeahead' // ES2015
 import AsyncSearch from './AsyncSearch'
+import { connect } from 'react-redux'
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      movieID: 267935 // set initital load movie - Big Friendly Giant
+      movieID: 321612 // set initital load movie - Big Friendly Giant
     }
   }
   render() {
@@ -21,7 +19,8 @@ export default class App extends Component {
       <div>
         {/*<SearchBox fetchMovieID={this.fetchMovieID.bind(this)}/>*/}
         <AsyncSearch />
-        <Card data={this.state}/>
+        {/*<MovieCard data={this.state || this.props.selectedMovieId}/>*/}
+        <MovieCard />
         <Footer TMDBLogo={TMDBLogo}/>
       </div>
     )
@@ -61,41 +60,16 @@ export default class App extends Component {
   }
 }
 
-//     const suggests = new Bloodhound({
-//       datumTokenizer: function(datum) {
-//         return Bloodhound.tokenizers.whitespace(datum.value)
-//       },
-//       queryTokenizer: Bloodhound.tokenizers.whitespace,
-//       remote: {
-//         url: 'https://api.themoviedb.org/3/search/movie?query=%QUERY&api_key=ca66037b5b40d478784f66cc2a04b448',
-//         filter: function(movies) {
-//           // Map the remote source JSON array to a JavaScript object array
-//           return $.map(movies.results, function(movie) {
-//             return {
-//               value: movie.original_title, // search original title
-//               id: movie.id // get ID of movie simultaniously
-//             }
-//           })
-//         }
-//       }
-//     })
+//========container for App
+import { setSelectedMovieId } from '../reducers/movies'
 
-//     suggests.initialize() // initialise bloodhound suggestion engine
+const mapStateToProps = (state, ownProps) => (
+  {
+    selectedMovieId: state.movies.selectedMovieId
+  }
+)
 
-// const $typeahead = $('.typeahead')
-// console.log($typeahead)
+const mapDispatchToProps = (dispatch) => ({
+})
 
-//     // Instantiate the Typeahead UI
-//     typeahead($typeahead,
-//     //{
-//     //   hint: true,
-//     //   highlight: true,
-//     //   minLength: 2
-//     // },
-//     {source: suggests.ttAdapter()}).on('typeahead:selected', function(obj, datum) {
-//       this.fetchMovieID(datum.id)
-//     }.bind(this)) // END Instantiate the Typeahead UI
-//   } // end component did mount function
-
-//   // } // END CLASS - APP
-// }
+export default connect(mapStateToProps, mapDispatchToProps)(App)

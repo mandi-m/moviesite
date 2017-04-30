@@ -1,7 +1,7 @@
 {
-  "name": "exploringd3",
+  "name": "moviesite",
   "version": "0.0.1",
-  "description": "A happy little skeleton.",
+  "description": "Movie search using React Redux.",
   "main": "index.js",
   "engines": {
     "node": ">= 7.0.0"
