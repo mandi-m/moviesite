@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
+import dateFormat from 'dateformat'
 let numeral = require('numeral')
 let backdropIMG
 
@@ -17,46 +18,41 @@ class MovieCard extends Component {
       productionList = nestedDataToString(production),
       productionCountriesList = nestedDataToString(productionCountries),
       noData = '-',
-      genresList = nestedDataToString(genres);
-    backdropIMG = 'https://image.tmdb.org/t/p/original' + data.backdrop_path
-
-    // conditional statements for no data
-    if (data.vote === 'undefined' || data.vote === 0) {
-      data.vote = noData
-    } else {
-      data.vote = data.vote + ' / 10'
-    };
-
-    if (totalRevenue === 'undefined' || totalRevenue === 0) {
-      totalRevenue = noData
-    } else {
-      totalRevenue = numeral(data.revenue).format('($0,0)');
-    };
+      genresList = nestedDataToString(data.genres),
+      backdropIMG = 'https://image.tmdb.org/t/p/original' + data.backdrop_path
 
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-2"></div>
-          <div className="col-lg-4">
-            <img src={posterIMG} />
+      <div>
+          <div className="container">
+            <div className="row">
+              <div className="col-sm-2"></div>
+              <div className="col-sm-4 nopadding">
+                <img src={posterIMG} />
+              </div>
+              <div className="col-sm-5 bg-info nopadding">
+                <h1>{ data.original_title}</h1>
+                <h3 className="lead">{ data.tagline }</h3>
+                <p>{ data.overview }</p>
+                <p>Genres: { genresList }</p>
+                <p>Original Release: {dateFormat(data.release_date, 'mmmm dS, yyyy')}</p>
+                <p>Budget: { moneyFormatter.format(data.budget) }</p>
+                <p>Revenue: { moneyFormatter.format(data.revenue) }</p>
+                <p>Length: { data.runtime }</p>
+                <p>Viewer Rating: { data.vote_average }/10</p>
+              </div>
+              <div className="col-sm-1"></div>
+            </div>
           </div>
-          <div className="col-lg-4 bg-info">
-            movie stuff here
-          </div>
-          <div className="col-lg-2"></div>
-        </div>
       </div>
     )
   }
   componentDidMount() {
     document.body.style.backgroundImage = 'url(' + backdropIMG + ')';
-    //document.backgroundImage = 'url(' + backdropIMG + ')';
+    //document.getElementById('myElement').style.backgroundImage = 'url(' + backdropIMG + ')';
   }
   ComponentDidUpdate() {
     document.body.style.backgroundImage = 'url(' + backdropIMG + ')';
-    //document.backgroundImage = 'url(' + backdropIMG + ')';
   }
-
 }
 
 
@@ -69,6 +65,13 @@ function nestedDataToString(nestedData) {
   resultString = nestedArray.join(', ') // array to string
   return resultString
 };
+
+const moneyFormatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 0,
+})
+
 
 //========container for MovieCard
 import { } from '../reducers/movies'

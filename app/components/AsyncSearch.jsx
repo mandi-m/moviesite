@@ -14,7 +14,7 @@ const AsyncSearch = React.createClass({
   },
 
   render() {
-    const style = { width: 400, margin: 50 }
+    const style = { width: 400, margin: 150 }
     return (
       <div>
         <div className="container">

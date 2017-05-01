@@ -15,13 +15,19 @@ class App extends Component {
   }
   render() {
     const TMDBLogo = 'https://www.themoviedb.org/assets/static_cache/dd25a8d6d44072f1be5a9daf03470526/images/v4/logos/293x302-powered-by-square-green.png'
+    let backdropIMG = 'https://image.tmdb.org/t/p/original' + this.props.selectedMovieData.backdrop_path
+    let sectionStyle = {
+      backgroundImage: 'url(' + backdropIMG + ')'
+    }
     return (
       <div>
+        <section style={ sectionStyle }>
         {/*<SearchBox fetchMovieID={this.fetchMovieID.bind(this)}/>*/}
         <AsyncSearch />
         {/*<MovieCard data={this.state || this.props.selectedMovieId}/>*/}
         <MovieCard />
         <Footer TMDBLogo={TMDBLogo}/>
+        </section>
       </div>
     )
   }
@@ -65,7 +71,8 @@ import { setSelectedMovieId } from '../reducers/movies'
 
 const mapStateToProps = (state, ownProps) => (
   {
-    selectedMovieId: state.movies.selectedMovieId
+    selectedMovieId: state.movies.selectedMovieId,
+    selectedMovieData: state.movies.selectedMovieData
   }
 )
 
