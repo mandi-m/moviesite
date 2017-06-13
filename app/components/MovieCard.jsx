@@ -34,6 +34,13 @@ class MovieCard extends Component {
                 <p>Revenue: { moneyFormatter.format(data.revenue) }</p>
                 <p>Length: { data.runtime }</p>
                 <p>Viewer Rating: { data.vote_average }/10</p>
+                <br />
+                <br />
+                <br />
+                                <br />
+                <br />
+                                <br />
+                <br />
               </div>
               <div className="col-sm-1 col-m-1 col-lg-1"></div>
             </div>
@@ -43,7 +50,6 @@ class MovieCard extends Component {
   }
   componentDidMount() {
     document.body.style.backgroundImage = 'url(' + backdropIMG + ')';
-    //document.getElementById('myElement').style.backgroundImage = 'url(' + backdropIMG + ')';
   }
   ComponentDidUpdate() {
     document.body.style.backgroundImage = 'url(' + backdropIMG + ')';
