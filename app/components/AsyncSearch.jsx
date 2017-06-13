@@ -14,20 +14,19 @@ const AsyncSearch = React.createClass({
   },
 
   render() {
-    const style = { width: 400, margin: 150 }
+    // const style = { width: 400, margin: 150 }
     return (
       <div>
         <div className="container">
-          <div className="row">
-            <div className="col-md-4"></div>
-            <div className="col-md-4">
+          <div className="row myline">
+            <div className="col-s-1 col-md-4 col-lg-2"></div>
+            <div className="col-s-10 col-md-4 col-lg-8">
               <div className="style"><BasicSlider /></div></div>
-            <div className="col-md-4"></div>
+            <div className="col-s-1 col-md-4 col-lg-2"></div>
           </div>
-          <div className="row"></div>
-          <div className="row">
-            <div className="col-md-4"></div>
-            <div className="col-md-4">
+          <div className="row myline">
+            <div className="col-s-1 col-md-4 col-lg-4"></div>
+            <div className="col-s-10 col-md-4 col-lg-4">
               <div className="style">
               <AsyncTypeahead
                 {...this.state}
@@ -37,7 +36,7 @@ const AsyncSearch = React.createClass({
                 onInputChange={this.onInputChange}
               /></div>
             </div>
-            <div className="col-md-4"></div>
+            <div className="col-s-1 col-md-4 col-lg-4"></div>
           </div>
         </div>
       </div>
@@ -82,7 +81,7 @@ const AsyncSearch = React.createClass({
   //   this.setState({[name]: checked})
   // },
 
-  findMovieByName(movieName){
+  findMovieByName(movieName) {
     const movieObj = this.state.options.find(function(x){
       return x.original_title===movieName
     }) || {}
@@ -113,8 +112,6 @@ const AsyncSearch = React.createClass({
       // })
   },
 })
-
-// export default AsyncSearch
 
 //========container for AsyncSearch
 import { setSelectedMovieId, fetchMovieData } from '../reducers/movies'

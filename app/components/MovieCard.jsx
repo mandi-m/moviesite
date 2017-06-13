@@ -15,32 +15,27 @@ class MovieCard extends Component {
       productionCountries = data.production_countries,
       genres = data.genre,
       totalRevenue = data.revenue,
-      productionList = nestedDataToString(production),
-      productionCountriesList = nestedDataToString(productionCountries),
+      //productionCountriesList = nestedDataToString(productionCountries),
       noData = '-',
-      genresList = nestedDataToString(data.genres),
       backdropIMG = 'https://image.tmdb.org/t/p/original' + data.backdrop_path
 
     return (
       <div>
-          <div className="container">
-            <div className="row">
-              <div className="col-sm-2"></div>
-              <div className="col-sm-4 nopadding">
-                <img src={posterIMG} />
-              </div>
-              <div className="col-sm-5 bg-info nopadding">
+          <div className="container movieRow">
+            <div className="row posterRow">
+              <div className="col-sm-2 col-m-1 col-lg-1"></div>
+                <img src={posterIMG} className="col-sm-4 col-m-5 col-lg-4 nopadding"/>
+              <div className="col-sm-5 col-m-5 col-lg-6 bg-info inside-full-height">
                 <h1>{ data.original_title}</h1>
                 <h3 className="lead">{ data.tagline }</h3>
                 <p>{ data.overview }</p>
-                <p>Genres: { genresList }</p>
                 <p>Original Release: {dateFormat(data.release_date, 'mmmm dS, yyyy')}</p>
                 <p>Budget: { moneyFormatter.format(data.budget) }</p>
                 <p>Revenue: { moneyFormatter.format(data.revenue) }</p>
                 <p>Length: { data.runtime }</p>
                 <p>Viewer Rating: { data.vote_average }/10</p>
               </div>
-              <div className="col-sm-1"></div>
+              <div className="col-sm-1 col-m-1 col-lg-1"></div>
             </div>
           </div>
       </div>
@@ -54,17 +49,6 @@ class MovieCard extends Component {
     document.body.style.backgroundImage = 'url(' + backdropIMG + ')';
   }
 }
-
-
-function nestedDataToString(nestedData) {
-  let nestedArray = [],
-    resultString
-  nestedArray.forEach(function(item, i) {
-    nestedArray.push(item.name)
-  })
-  resultString = nestedArray.join(', ') // array to string
-  return resultString
-};
 
 const moneyFormatter = new Intl.NumberFormat('en-US', {
   style: 'currency',

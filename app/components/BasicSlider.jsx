@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
-import InputRange from 'react-input-range';
+import InputRange from 'react-input-range'
 
 class BasicSlider extends React.Component {
   constructor(props) {
@@ -20,12 +20,12 @@ class BasicSlider extends React.Component {
   render() {
     return (
       <form className="form">
-      <InputRange
-        maxValue={2017}
-        minValue={1888}
-        value={this.state.value}
-        onChange={value => this.handleChange({ value })} />
-        </form>
+        <InputRange
+          maxValue={2017}
+          minValue={1888}
+          value={this.state.value}
+          onChange={value => this.handleChange({ value })} />
+      </form>
     )
   }
 }

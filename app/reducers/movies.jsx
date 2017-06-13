@@ -34,20 +34,20 @@ const initialState = {
   selectedMovieId: 321612,
   startSearchDate: '1950-01-01',
   endSearchDate: '2010-12-31',
-  selectedMovieData:{
+  selectedMovieData: {
     adult: false,
     backdrop_path: '/6aUWe0GSl69wMTSWWexsorMIvwU.jpg',
     belongs_to_collection: null,
     budget: 160000000,
     genres: [
-    {
-    id: 14,
-    name: 'Fantasy'
-    },
-    {
-    id: 10749,
-    name: 'Romance'
-    }
+      {
+        id: 14,
+        name: 'Fantasy'
+      },
+      {
+        id: 10749,
+        name: 'Romance'
+      }
     ],
     homepage: 'http://movies.disney.com/beauty-and-the-beast-2017',
     id: 321612,
@@ -58,33 +58,33 @@ const initialState = {
     popularity: 128.168016,
     poster_path: '/tWqifoYuwLETmmasnGHO7xBjEtt.jpg',
     production_companies: [
-    {
-    name: 'Walt Disney Pictures',
-    id: 2
-    },
-    {
-    name: 'Mandeville Films',
-    id: 10227
-    }
+      {
+        name: 'Walt Disney Pictures',
+        id: 2
+      },
+      {
+        name: 'Mandeville Films',
+        id: 10227
+      }
     ],
     production_countries: [
-    {
-    iso_3166_1: 'GB',
-    name: 'United Kingdom'
-    },
-    {
-    iso_3166_1: 'US',
-    name: 'United States of America'
-    }
+      {
+        iso_3166_1: 'GB',
+        name: 'United Kingdom'
+      },
+      {
+        iso_3166_1: 'US',
+        name: 'United States of America'
+      }
     ],
     release_date: '2017-03-16',
     revenue: 1048233200,
     runtime: 129,
     spoken_languages: [
-    {
-    iso_639_1: 'en',
-    name: 'English'
-    }
+      {
+        iso_639_1: 'en',
+        name: 'English'
+      }
     ],
     status: 'Released',
     tagline: 'Be our guest.',
@@ -92,9 +92,8 @@ const initialState = {
     video: false,
     vote_average: 6.8,
     vote_count: 2142
-    }
   }
-
+}
 
 export default function moviesReducer(state = initialState, action) {
   const nextState = Object.assign({}, state)

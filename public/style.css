@@ -7,3 +7,19 @@ body {
   margin: 0 auto;
   padding: 100px 30px 0;
 }
+
+.myline {
+    height: 100px;
+}
+
+.movieRow {
+    height: 500px;
+}
+
+.nopadding {
+   padding: 0;
+}
+
+.posterRow {
+    height: 100%;
+}
