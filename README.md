@@ -1,6 +1,6 @@
 # Welcome to MovieSite
 
-MovieSite was made over a two-day period during Fullstack Academy of Code's Stackathon. It is a MVP movie search tool made with React, Redux, Bootstrap, and the <a href="https://www.themoviedb.org/documentation/api" target="_blank">Movie Database’s API</a>.
+MovieSite was made over a two-day period during Fullstack Academy of Code's Stackathon. It is a MVP movie search tool made with React, Redux, Bootstrap, and the [Movie Database's API](https://www.themoviedb.org/documentation/api){:target="_blank"}.
 
 ## Installation
 First, clone the repository through git and change to the new directory:
